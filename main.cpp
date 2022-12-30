@@ -45,16 +45,16 @@ int main(){
 	uint FrameCounter = 0;
 	SetTargetFPS(frameRate);
 	InitWindow(screenWidth,screenHeight,"Particle Simulator");
-	std::cout << std::format("testing format: ", frameRate) << std::endl;
+
 	// Particle data
-	int Nparticles = 200;
-	int ParticleSize = 2;
+	int Nparticles = 2000;
+	int ParticleSize = 4;
 	float vmin = -2;
 	float vmax = 2;
-	float pmin_x = screenWidth*0.15;
-	float pmax_x = screenWidth*0.85;
-	float pmin_y = screenHeight*0.15;
-	float pmax_y = screenHeight*0.85;
+	float pmin_x = screenWidth*0.45;
+	float pmax_x = screenWidth*0.55;
+	float pmin_y = screenHeight*0.45;
+	float pmax_y = screenHeight*0.55;
 	
 	// Particle containers
 	std::vector<Vector2> particles(Nparticles);
@@ -79,7 +79,7 @@ int main(){
 		particles_m[i].x = 1;
 		particles_m[i].y = 0;
 	}
-	particles_m[0].x = 100;
+	particles_m[0].x = 50;
 	// Tracking particle 0 with a line
 	particle0_position.push_back(particles[0]);
 
@@ -132,7 +132,6 @@ int main(){
 		BeginDrawing();
 		ClearBackground(BLACK);
 		DrawFPS(10,10);
-		DrawText(std::format("Steps: ",FrameCounter),10,40,20,RAYWHITE);
 		// Line for the 'heavy' particle
 		if (particle0_position.size() >= 2) {
 			for (int i = 0; i < particle0_position.size()-1; ++i) {
